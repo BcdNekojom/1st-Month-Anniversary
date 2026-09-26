@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 1st Month Anniversary ❤️ Our Little Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Prompt:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff6b9d;
+      --primary-light: #ffd2e1;
+      --primary-dark: #e8437d;
+      --secondary: #9c88ff;
+      --bg-dark: #0d0e17;
+      --card-bg: rgba(26, 23, 40, 0.75);
+      --card-border: rgba(255, 182, 193, 0.2);
+      --text-main: #f5f6fa;
+      --text-muted: #dcdde1;
+      --text-gold: #fbc531;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #201435 0%, #0c0b16 50%, #05050a 100%);
+      color: var(--text-main);
+      font-family: 'Prompt', 'Mitr', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating hearts / stars canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header / Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 107, 157, 0.18);
+      border: 1px solid rgba(255, 107, 157, 0.4);
+      color: #ff9ec4;
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(255, 107, 157, 0.2);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #fff 20%, #ffc0cb 50%, #ff8da1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+      text-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+    }
+
+    .hero-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #ffb8d2;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .hero-sub {
+      color: #b8b9cc;
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    /* Music Player Bar */
+    .music-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 40px;
+      padding: 10px 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      margin-bottom: 40px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .music-bar:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 107, 157, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .music-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+      animation: spin 6s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .music-bar.playing .music-icon {
+      animation-play-state: running;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .music-info {
+      text-align: left;
+    }
+
+    .music-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .music-status {
+      font-size: 0.75rem;
+      color: #a0a2be;
+    }
+
+    /* Counter / Stats */
+    .counter-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 70px;
+    }
+
+    .counter-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 20px 28px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      min-width: 140px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .counter-num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ff9ec4;
+      line-height: 1.1;
+    }
+
+    .counter-label {
+      font-size: 0.85rem;
+      color: #a8a9be;
+      margin-top: 4px;
+    }
+
+    /* Section Title */
+    .section-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-head p {
+      color: #9ea0b8;
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    /* Timeline Container */
+    .timeline {
+      position: relative;
+      max-width: 950px;
+      margin: 0 auto 80px;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(180deg, rgba(255,107,157,0.8) 0%, rgba(156,136,255,0.8) 60%, rgba(255,255,255,0.1) 100%);
+      top: 20px;
+      bottom: 40px;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 4px;
+      box-shadow: 0 0 15px rgba(255, 107, 157, 0.4);
+    }
+
+    .story-card {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin-bottom: 50px;
+    }
+
+    .story-card.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .story-card.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    /* Timeline node / badge */
+    .timeline-node {
+      position: absolute;
+      top: 30px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b9d, #845ec2);
+      border: 4px solid #0d0e17;
+      box-shadow: 0 0 18px rgba(255, 107, 157, 0.8);
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .story-card.left .timeline-node {
+      right: -22px;
+    }
+
+    .story-card.right .timeline-node {
+      left: -22px;
+    }
+
+    /* Card Box */
+    .card-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.45);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-content:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 107, 157, 0.6);
+      box-shadow: 0 20px 40px rgba(255, 107, 157, 0.25);
+    }
+
+    .card-content::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 107, 157, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .story-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-pink {
+      background: rgba(255, 107, 157, 0.2);
+      color: #ff9ec4;
+      border: 1px solid rgba(255, 107, 157, 0.3);
+    }
+
+    .tag-purple {
+      background: rgba(156, 136, 255, 0.2);
+      color: #c0b3ff;
+      border: 1px solid rgba(156, 136, 255, 0.3);
+    }
+
+    .tag-gold {
+      background: rgba(251, 197, 49, 0.2);
+      color: #ffd868;
+      border: 1px solid rgba(251, 197, 49, 0.3);
+    }
+
+    .story-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+
+    /* Image wrapper inside card */
+    .img-box {
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      position: relative;
+      background: #000;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .img-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .img-zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #eee;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+    }
+
+    /* Emotional story text */
+    .story-desc {
+      font-size: 0.98rem;
+      line-height: 1.85;
+      color: #dedee8;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    .story-quote {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--primary);
+      padding: 10px 16px;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #ffcadc;
+      text-align: left;
+    }
+
+    /* Side-by-side or responsive adjustments */
+    @media (max-width: 820px) {
+      .timeline::after {
+        left: 30px;
+      }
+
+      .story-card {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 15px;
+      }
+
+      .story-card.left,
+      .story-card.right {
+        left: 0;
+        text-align: left;
+      }
+
+      .story-card.left .timeline-node,
+      .story-card.right .timeline-node {
+        left: 8px;
+        right: auto;
+      }
+
+      .img-box img {
+        height: 320px;
+      }
+    }
+
+    /* Bonus / Texture Gallery Section */
+    .texture-section {
+      margin-top: 60px;
+      padding-top: 50px;
+      border-top: 1px dashed rgba(255, 107, 157, 0.3);
+    }
+
+    .texture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .texture-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .texture-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(156, 136, 255, 0.6);
+      box-shadow: 0 14px 30px rgba(156, 136, 255, 0.25);
+    }
+
+    .texture-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .texture-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .texture-card-body {
+      padding: 16px 20px;
+    }
+
+    .texture-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .texture-card-desc {
+      font-size: 0.85rem;
+      color: #a2a4bd;
+      line-height: 1.5;
+    }
+
+    /* Love Letter Section */
+    .love-letter-wrap {
+      margin-top: 90px;
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.12), rgba(156, 136, 255, 0.12));
+      border: 1px solid rgba(255, 182, 193, 0.35);
+      border-radius: 30px;
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(16px);
+    }
+
+    .love-letter-wrap::before {
+      content: '💌';
+      font-size: 3rem;
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0d0e17;
+      padding: 0 15px;
+      border-radius: 50%;
+    }
+
+    .letter-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+
+    .letter-body {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: #f1f2f6;
+      max-width: 780px;
+      margin: 0 auto 30px;
+      text-align: justify;
+      text-align-last: center;
+    }
+
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #ff8da1;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #7f829c;
+      font-size: 0.85rem;
+    }
+
+    /* Modal / Lightbox */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(255, 107, 157, 0.5);
+      object-fit: contain;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+    }
+
+    /* Interactive Heart Click Burst */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 24px;
+      z-index: 9999;
+      animation: floatUp 1.2s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.6);
+      }
+      50% {
+        transform: translate(var(--x), -80px) scale(1.3);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), -160px) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle background canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="container">
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="badge-pill">
+        ✨ Happy 1st Month Anniversary ✨
+      </div>
+      <h1>บันทึกรัก & ความทรงจำของเรา</h1>
+      <span class="hero-script">30 Days of Love & Every Moment with You</span>
+      <p class="hero-sub">
+        ถึงแม้รูปพี่จะไม่ค่อยได้แคปไว้เยอะเท่าไหร่ แต่ทุกช่วงเวลา ทุกชุดคู่ และทุกรอยยิ้มที่เรามีด้วยกันในเกมและในโลกความจริง พี่จำมันได้หมดเลยนะคนดี 💖
+      </p>
+
+      <!-- Music Player Bar -->
+      <div class="music-bar" id="musicToggle" title="คลิกเพื่อเปิด/ปิดเสียงเพลงคลอ">
+        <div class="music-icon" id="musicIcon">🎵</div>
+        <div class="music-info">
+          <div class="music-title">Claire de Lune & Sweet Acoustic</div>
+          <div class="music-status" id="musicStatus">คลิกเพื่อเปิดเพลงคลอเบาๆ 🎧</div>
+        </div>
+      </div>
+
+      <!-- Counter Stats -->
+      <div class="counter-row">
+        <div class="counter-box">
+          <div class="counter-num">1</div>
+          <div class="counter-label">เดือนเต็มๆ ของเรา 🌹</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-num">30</div>
+          <div class="counter-label">วันที่ใจตรงกัน 💫</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-num">∞</div>
+          <div class="counter-label">ความทรงจำที่จะมีต่อ 🤍</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-num">100%</div>
+          <div class="counter-label">รักและยอมเธอคนเดียว 🧸</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Timeline (Images 1-6) -->
+    <div class="section-head">
+      <h2>📖 เรื่องราวในแต่ละรูปของเรา</h2>
+      <p>ร้อยเรียงทุกความรู้สึก ความทรงจำ และความผูกพันที่เติบโตขึ้นทุกวัน</p>
+    </div>
+
+    <div class="timeline">
+      
+      <!-- Photo 1 -->
+      <div class="story-card left">
+        <div class="timeline-node">1</div>
+        <div class="card-content">
+          <span class="story-tag tag-pink">จุดเริ่มต้นของเราสองคน 🤎</span>
+          <h3 class="story-title">ชุดคู่แรกของเรา 2 คนในเกม</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-1.png')">
+            <img src="images/image-1.png" alt="ชุดคู่แรกของเรา2คน ในเกม" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            ยังจำวันแรกที่เราใส่ชุดโทนน้ำตาลคู่กันหมวกน่ารักๆ แบบนี้ได้ไหม... เป็นชุดคู่ชุดแรกที่เราเริ่มสร้างความทรงจำด้วยกันในโลกของเกม ตอนนั้นพี่แอบมองเธอบ่อยมาก ยิ่งเห็นตัวละครเรายืนเคียงข้างกัน ใจมันก็เต้นแรงบอกไม่ถูก เป็นจุดเริ่มต้นของความอบอุ่นที่ทำให้รู้ว่า "เราอยากอยู่ข้างๆ คนนี้ตลอดไป"
+          </p>
+          <div class="story-quote">
+            “จุดเริ่มต้นที่แสนธรรมดา แต่กลายเป็นช่วงเวลาที่พิเศษที่สุดในหัวใจ”
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="story-card right">
+        <div class="timeline-node">2</div>
+        <div class="card-content">
+          <span class="story-tag tag-purple">ใจตรงกันโดยไม่ต้องพูด 💙</span>
+          <h3 class="story-title">ชุดคู่ที่เท่าไหร่ไม่รู้... แต่เห็นเธอแต่ง เลยต้องไปแต่งตาม</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-2.png')">
+            <img src="images/image-2.png" alt="ชุดคู่ที่เท่าไหร่ไม่รู้แต่เห็นแฟนแต่งเลยแต่งตาม" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            ชุดสีฟ้าละมุนกับรองเท้ากระต่ายนุ่มฟูอันนี้ จำไม่ได้แล้วว่าเป็นชุดที่เท่าไหร่ แต่จำได้แม่นว่าวันนั้นพอเห็นเธอแต่งตัวน่ารักแบบนี้ พี่ก็รีบไปหาชุดมาแต่งให้เข้ากับเธอทันที เพราะพี่ไม่อยากให้ใครมายืนข้างเธอ อยากเป็นคนเดียวที่ใส่ชุดคู่และได้กอดเธอแบบนี้คนเดียวเท่านั้น
+          </p>
+          <div class="story-quote">
+            “ไม่สำคัญว่าชุดที่เท่าไหร่ ขอแค่อีกคนที่ยืนข้างๆ เป็นเธอ... ก็พอแล้ว”
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="story-card left">
+        <div class="timeline-node">3</div>
+        <div class="card-content">
+          <span class="story-tag tag-gold">สมาชิกใหม่ & ความสดใส 🖤</span>
+          <h3 class="story-title">เธอมีน้องสาวคนแรก แล้วชวนแต่งคู่กัน</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-3.png')">
+            <img src="images/image-3.png" alt="เธอมีน้องสาวคนแรกแล้วชวนแต่งคู่กัน" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            วันนั้นเธอตื่นเต้นมากที่ได้มีน้องสาวคนแรก รีบมาชวนพี่แต่งตัวคู่กันโทนขาวดำน่ารักๆ สไตล์นี้  พี่ชอบสายตาและรอยยิ้มของเธอเวลาที่มีความสุขที่สุด การได้เห็นเธอมีรอยยิ้มและได้คอยลูบหัวดูแลเธอแบบนี้ มันคือความสุขที่เรียบง่ายแต่มีความหมายมากจริงๆ
+          </p>
+          <div class="story-quote">
+            “ชอบเวลาที่เธอชวนทำอะไรด้วยกัน ได้เห็นเธอยิ้ม พี่ก็มีความสุขไปด้วยทั้งวัน”
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 4 -->
+      <div class="story-card right">
+        <div class="timeline-node">4</div>
+        <div class="card-content">
+          <span class="story-tag tag-pink">บทเรียนความรัก & ความเข้าใจ 🌅</span>
+          <h3 class="story-title">ชุดที่ทะเลาะกันครั้งแรก... เพราะพี่งอแงเอง</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-4.png')">
+            <img src="images/image-4.png" alt="ชุดที่ทะเลาะกันครั้งแรกเพราะพี่งอแงเอง" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            ชุดลายสก็อตโทนเทาดำชุดนี้ เป็นชุดตอนที่เรามีเรื่องไม่เข้าใจกันครั้งแรก... ตอนนั้นพี่เป็นฝ่ายงอแงและเอาแต่ใจเอง ขอโทษนะคนดีที่ทำให้เธอต้องเหนื่อยใจ แต่รู้ไหมว่าทุกครั้งที่เราผ่านมันมาได้ มันทำให้พี่รู้เลยว่าพี่รักเธอมากแค่ไหน และไม่อยากเสียเธอไปเลยแม้แต่วินาทีเดียว ขอบคุณที่ยังจับมือและให้อภัยกันนะ
+          </p>
+          <div class="story-quote">
+            “ขอโทษที่เคยงอแงนะ... ขอบคุณที่เข้าใจและไม่ปล่อยมือกันไปไหน สัญญาว่าจะดูแลเธอให้ดีขึ้นทุกวัน”
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 5 -->
+      <div class="story-card left">
+        <div class="timeline-node">5</div>
+        <div class="card-content">
+          <span class="story-tag tag-purple">วันที่สถานะเปลี่ยนเป็นแฟน 💍</span>
+          <h3 class="story-title">ชุดที่พี่ขอหนูเป็นแฟน</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-5.png')">
+            <img src="images/image-5.png" alt="ชุดที่พี่ของหนูเป็นแฟน" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            วันที่มีความหมายที่สุดในชีวิตของพี่... วันที่พี่รวบรวมความกล้าทั้งหมดเพื่อขอเธอมาเป็นแฟน ชุดสตรีทเท่ๆ โทนขาวดำลายกราฟิกนี้จะเป็นชุดที่พี่จำได้ไม่มีวันลืม จากคนที่แค่คุยกัน เล่นเกมด้วยกัน จนได้มาเป็นคนรู้ใจของกันและกัน ขอบคุณที่ตอบตกลงเข้ามาเป็นความสดใสและเป็นโลกทั้งใบของพี่นะ
+          </p>
+          <div class="story-quote">
+            “ตั้งแต่วันที่เธอตอบตกลง... หัวใจของพี่ก็ไม่เคยเหงาอีกเลย ขอบคุณที่เป็นแฟนพี่นะ”
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 6 -->
+      <div class="story-card right">
+        <div class="timeline-node">6</div>
+        <div class="card-content">
+          <span class="story-tag tag-gold">ความทรงจำหน้ากล้องครั้งแรก 🎬</span>
+          <h3 class="story-title">ชุดที่หนูพาไปทำคลิปครั้งแรก</h3>
+          
+          <div class="img-box" onclick="openModal('images/image-6.png')">
+            <img src="images/image-6.png" alt="ชุดที่หนูพาไปทำคลิปครั้งแรก" loading="lazy">
+            <div class="img-zoom-hint">🔍 คลิกเพื่อดูรูปใหญ่</div>
+          </div>
+
+          <p class="story-desc">
+            ลุคฮู้ดโครงกระดูกมีเขาปีศาจเท่ๆ กับเธอในลุคดาร์กสุดเก๋ วันนั้นเธอพาพี่ไปอัดคลิปครั้งแรก พี่ทำตัวไม่ค่อยถูก แอบเก้ๆ กังๆ แต่พอมีเธอคอยบอก คอยจัดมุม ถ่ายคลิปน่ารักๆ ด้วยกัน มันกลายเป็นช่วงเวลาที่โคตรสนุกและมีความสุขมากเลย ทุกคลิปและทุกรูปที่มีเธอ คือสมบัติล้ำค่าที่สุดของพี่
+          </p>
+          <div class="story-quote">
+            “ทุกคลิปและทุกโมเมนต์ที่เราสร้างด้วยกัน คือเรื่องราวที่ดีที่สุดในชีวิตพี่เลยนะ”
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section: After Photo 6 Texture & Fun Memories -->
+    <div class="texture-section">
+      <div class="section-head">
+        <h2>✨ ภาพบรรยากาศ & เทกเจอร์ความสนุกของเรา</h2>
+        <p>เก็บตกโมเมนต์ลุยแมพ ขึ้นเขา ถ่ายรูปกับแก๊งเพื่อน และทุกที่ที่เราไปพิชิตด้วยกัน</p>
+      </div>
+
+      <div class="texture-grid">
+        
+        <div class="texture-card" onclick="openModal('images/9656792065_138587975979047_1787851777788.png')">
+          <img src="images/9656792065_138587975979047_1787851777788.png" alt="ทุ่งดอกไม้สีทอง" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>ทุ่งหญ้าสีทอง & โคมลอย ✨</span>
+              <span>🌾</span>
+            </div>
+            <p class="texture-card-desc">นั่งกอดเข่ามองวิวใต้ต้นไม้ใหญ่ แสงสีทองส่องประกายเหมือนความรักของเราสองคน</p>
+          </div>
+        </div>
+
+        <div class="texture-card" onclick="openModal('images/9656792065_108636715898032_1787659689567.png')">
+          <img src="images/9656792065_108636715898032_1787659689567.png" alt="Claire de Lune" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>Claire De Lune 🌙</span>
+              <span>💜</span>
+            </div>
+            <p class="texture-card-desc">ยืนเคียงข้างกันใต้แสงจันทร์และสวนดอกไม้ โทนสีม่วงอบอุ่น โรแมนติกที่สุด</p>
+          </div>
+        </div>
+
+        <div class="texture-card" onclick="openModal('images/9656792065_106040569659311_1787849139495.png')">
+          <img src="images/9656792065_106040569659311_1787849139495.png" alt="Mt. Manimporok" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>Mt. Manimporok Summit 🏔️</span>
+              <span>🦋</span>
+            </div>
+            <p class="texture-card-desc">ปีนยอดเขาดูแสงเหนือ ปีกผีเสื้อกับก๊วนเพื่อนตัวจิ๋ว สนุกและหัวเราะกันไม่หยุด</p>
+          </div>
+        </div>
+
+        <div class="texture-card" onclick="openModal('images/9656792065_92051768915465_1787683030458.png')">
+          <img src="images/9656792065_92051768915465_1787683030458.png" alt="Mount Shinobi" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>Mount Shinobi ⛩️</span>
+              <span>🔥</span>
+            </div>
+            <p class="texture-card-desc">ป้ายแลนด์มาร์กสุดเท่กับเพื่อนๆ แต่สายตาและจุดโฟกัสของพี่ยังไงก็มีแค่เธอ</p>
+          </div>
+        </div>
+
+        <div class="texture-card" onclick="openModal('images/9656792065_109425909969773_1787938049952.png')">
+          <img src="images/9656792065_109425909969773_1787938049952.png" alt="บัลลังก์ดาบ & เปลวเพลิง" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>Iron Throne of Fire ⚔️</span>
+              <span>👑</span>
+            </div>
+            <p class="texture-card-desc">แวะมาเช็คอินหน้าบัลลังก์เปลวไฟสีน้ำเงิน แมพนี้ดุเดือดแต่มีเธออยู่ข้างๆ ก็อบอุ่นเสมอ</p>
+          </div>
+        </div>
+
+        <div class="texture-card" onclick="openModal('images/9656792065_106040569659311_1787849157543.png')">
+          <img src="images/9656792065_106040569659311_1787849157543.png" alt="แสงเหนือบนยอดเขา" loading="lazy">
+          <div class="texture-card-body">
+            <div class="texture-card-title">
+              <span>Aurora Lights & Sweet Poses 🌌</span>
+              <span>⭐</span>
+            </div>
+            <p class="texture-card-desc">ท่าโพสน่ารักๆ ใต้ผืนฟ้าแสงออโรร่า ความสุขเล็กๆ ที่ได้เล่นด้วยกันในทุกๆ วัน</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Heartfelt Anniversary Letter -->
+    <div class="love-letter-wrap">
+      <h3 class="letter-title">จดหมายถึงคนโปรดของพี่... ในวันครบรอบ 1 เดือน</h3>
+      <div class="letter-body">
+        “ถึงคนดีของพี่...<br>
+        เวลา 1 เดือนอาจจะฟังดูเหมือนเพิ่งเริ่มต้น แต่สำหรับพี่ ทุกๆ วันที่มีเธออยู่ด้วยมันมีค่าและมีความสุขมากจริงๆ ถึงพี่จะไม่ค่อยได้แคปรูปไว้เยอะเหมือนคนอื่น หรือบางทีพี่อาจจะพูดไม่เก่งไปบ้าง แต่ทุกโมเมนต์ที่เราเล่นเกมด้วยกัน นั่งคุยกันตอนดึกๆ ทะเลาะกันบ้างแต่งอนกันแป๊บเดียว พี่จำรายละเอียดของเธอได้หมดเลยนะ<br><br>
+        ขอบคุณที่ยอมเปิดใจให้พี่ ขอบคุณที่คอยรับฟัง ยอมแต่งชุดคู่ตลกๆ น่ารักๆ ด้วยกัน และขอบคุณที่เข้ามาเป็นรอยยิ้มในทุกๆ วันของพี่นะ จากนี้ไปไม่ว่าจะมีเรื่องอะไรเข้ามา พี่สัญญาว่าจะใจเย็น จะคอยรับฟัง และจะรักเธอให้มากขึ้นในทุกๆ วันเลยนะ อยู่เป็นความสุขของกันและกันแบบนี้ไปนานๆ นะครับ”
+      </div>
+      <div class="signature">รักหนูที่สุดเลยนะคุณแฟน ❤️</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Created with all my heart for Our 1st Month Anniversary • Forever & Always 💕</p>
+    </footer>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" src="" alt="ภาพความทรงจำ">
+  </div>
+
+  <script>
+    // Particle background (floating soft hearts & sparkling stars)
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 50;
+        this.size = Math.random() * 12 + 6;
+        this.speedY = Math.random() * 0.8 + 0.3;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.isHeart = Math.random() > 0.4;
+        this.color = Math.random() > 0.5 ? 'rgba(255, 150, 180,' : 'rgba(180, 160, 255,';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        if (this.y < -30 || this.x < -30 || this.x > canvas.width + 30) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.fillStyle = this.color + this.opacity + ')';
+        ctx.translate(this.x, this.y);
+        if (this.isHeart) {
+          const s = this.size / 15;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(-5 * s, -5 * s, -10 * s, 0, -10 * s, 5 * s);
+          ctx.bezierCurveTo(-10 * s, 10 * s, 0, 15 * s, 0, 18 * s);
+          ctx.bezierCurveTo(0, 15 * s, 10 * s, 10 * s, 10 * s, 5 * s);
+          ctx.bezierCurveTo(10 * s, 0, 5 * s, -5 * s, 0, 0);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size / 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      const p = new Particle();
+      p.y = Math.random() * canvas.height;
+      particles.push(p);
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Lightbox modal logic
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+
+    function openModal(src) {
+      modalImg.src = src;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Interactive heart burst on click anywhere on screen
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.music-bar') || e.target.closest('.modal')) return;
+      createHeart(e.clientX, e.clientY);
+    });
+
+    function createHeart(x, y) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      const emojis = ['💖', '💕', '🧸', '🌸', '✨', '🤍', '🤎'];
+      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = `${x}px`;
+      heart.style.top = `${y}px`;
+      const xOffset = (Math.random() - 0.5) * 80;
+      heart.style.setProperty('--x', `${xOffset}px`);
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1200);
+    }
+
+    // Web Audio API Synthesizer for smooth romantic gentle melody (Claire de Lune inspired progression)
+    let audioCtx = null;
+    let isPlaying = false;
+    let musicInterval = null;
+    const musicToggle = document.getElementById('musicToggle');
+    const musicStatus = document.getElementById('musicStatus');
+
+    // Warm chords & gentle notes (F, Am, Dm, Bb, C, F)
+    const melody = [
+      { f: 349.23, d: 1.4 }, // F4
+      { f: 440.00, d: 1.2 }, // A4
+      { f: 523.25, d: 1.6 }, // C5
+      { f: 659.25, d: 2.0 }, // E5
+      { f: 587.33, d: 1.2 }, // D5
+      { f: 523.25, d: 1.4 }, // C5
+      { f: 440.00, d: 1.4 }, // A4
+      { f: 392.00, d: 1.8 }, // G4
+      { f: 349.23, d: 2.2 }, // F4
+      { f: 329.63, d: 1.4 }, // E4
+      { f: 293.66, d: 1.6 }, // D4
+      { f: 349.23, d: 1.4 }, // F4
+      { f: 392.00, d: 1.8 }, // G4
+      { f: 523.25, d: 2.5 }  // C5
+    ];
+
+    let noteIndex = 0;
+
+    function playSoftNote(freq, duration) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      // soft sine with slight warmth
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function stepMelody() {
+      const note = melody[noteIndex % melody.length];
+      playSoftNote(note.f, note.d);
+      
+      // Also occasionally play a low warm bass note
+      if (noteIndex % 3 === 0) {
+        playSoftNote(note.f / 2, note.d * 1.5);
+      }
+
+      noteIndex++;
+    }
+
+    musicToggle.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (!isPlaying) {
+        isPlaying = true;
+        musicToggle.classList.add('playing');
+        musicStatus.innerText = 'กำลังเล่นเสียงดนตรีคลอเบาๆ 🎶 (คลิกเพื่อหยุด)';
+        stepMelody();
+        musicInterval = setInterval(stepMelody, 1600);
+      } else {
+        isPlaying = false;
+        musicToggle.classList.remove('playing');
+        musicStatus.innerText = 'คลิกเพื่อเปิดเพลงคลอเบาๆ 🎧';
+        clearInterval(musicInterval);
+      }
+    });
+  </script>
+</body>
+</html>
